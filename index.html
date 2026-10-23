@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<!--
+  Scribe, page de présentation
+  © 2026 Shams Guettaf, Anthropotech Lab. Tous droits réservés.
+  Voir LICENSE : reproduction et réutilisation interdites sans autorisation écrite.
+  Polices tierces sous licence SIL OFL 1.1 (voir fonts/OFL.txt).
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scribe, l'accompagnement emploi gratuit et sans compte</title>
+<meta name="description" content="Scribe accompagne la recherche d'emploi, du CV à l'entretien : lettre de motivation mise en page, suivi des candidatures, préparation d'entretien. Gratuit, sans compte, rien n'est collecté.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f6f7fb">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Scribe, Anthropotech Lab">
+<meta property="og:title" content="Scribe, l'accompagnement emploi gratuit et sans compte">
+<meta property="og:description" content="Du CV à l'entretien, chaque étape de la recherche d'emploi. Gratuit, sans compte, rien n'est collecté.">
+<meta property="og:url" content="https://shamsetdean.github.io/scribe-presentation/">
+<meta property="og:image" content="https://shamsetdean.github.io/scribe-presentation/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Scribe, Anthropotech Lab : l'accompagnement emploi, du CV à l'entretien">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Scribe, l'accompagnement emploi gratuit et sans compte">
+<meta name="twitter:description" content="Du CV à l'entretien, chaque étape de la recherche d'emploi.">
+<meta name="twitter:image" content="https://shamsetdean.github.io/scribe-presentation/og-image.png">
+<link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque.woff2" crossorigin>
+<link rel="preload" as="image" href="images/01-tableau.webp">
+<script>
+document.documentElement.classList.add('js');
+/* Aucun stockage dans le navigateur : l'ecran d'accueil est simplement saute
+   lors d'un retour arriere, d'un lien vers une section, ou en venant d'une autre page du site. */
+(function(){
+  var skip = !!location.hash;
+  try{
+    var nav = performance.getEntriesByType('navigation')[0];
+    if(nav && nav.type === 'back_forward') skip = true;
+    if(document.referrer && new URL(document.referrer).origin === location.origin) skip = true;
+  }catch(e){}
+  document.documentElement.classList.add(skip ? 'no-splash' : 'splash-on');
+})();
+</script>
+<style>
+/* Polices hebergees localement (licence SIL OFL 1.1, voir fonts/OFL.txt) : aucune requete externe */
+@font-face{font-family:"Bricolage Grotesque";src:url(fonts/bricolage-grotesque.woff2) format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(fonts/newsreader.woff2) format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(fonts/newsreader-italic.woff2) format("woff2");font-weight:200 800;font-style:italic;font-display:swap}
+@font-face{font-family:"Courier Prime";src:url(fonts/courier-prime.woff2) format("woff2");font-weight:400;font-display:swap}
+
+:root{
+  --paper:#f6f7fb;
+  --sheet:#ffffff;
+  --ink:#16204f;
+  --ink2:#4a5381;
+  --ink3:#8a90b2;
+  --line:rgba(22,32,79,.12);
+  --stamp:#e0533d;
+  --plume:#2c5f8a;
+  --sky:#5b9fd4;
+  --lilac:#ebe8f8;
+  --night:#121a45;
+  --night2:#1a2459;
+  --moon:#eef0fb;
+  --display:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Newsreader",Georgia,serif;
+  --type:"Courier Prime","Courier New",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{font-family:var(--display);background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+em.s{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+
+/* Ecran d'accueil : la plume trace un paraphe */
+html.splash-on,html.splash-on body{overflow:hidden}
+.no-splash #splash{display:none}
+#splash{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;cursor:pointer;
+  background:radial-gradient(70% 60% at 50% 42%,#fff 0%,var(--paper) 70%);transition:opacity .7s ease,visibility .7s ease}
+#splash.out{opacity:0;visibility:hidden}
+#splash .quill{width:64px;height:64px;opacity:0;transform:translate(-30px,10px) rotate(-12deg);animation:quill 1.5s cubic-bezier(.4,0,.2,1) .1s forwards}
+#splash h2{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(3rem,10vw,4.6rem);letter-spacing:-.02em;line-height:1;margin-top:14px;opacity:0;animation:up .8s ease .5s forwards}
+#splash svg.flourish{width:min(260px,62vw);height:auto;margin-top:2px}
+#splash .flourish path{fill:none;stroke:var(--stamp);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.2s cubic-bezier(.5,0,.2,1) .9s forwards}
+#splash p{margin-top:14px;color:var(--ink2);font-family:var(--serif);font-style:italic;font-size:1.05rem;opacity:0;animation:up .7s ease 1.3s forwards}
+@keyframes quill{to{opacity:1;transform:none}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Navigation */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;height:56px;background:rgba(246,247,251,.8);backdrop-filter:saturate(160%) blur(16px);-webkit-backdrop-filter:saturate(160%) blur(16px);border-bottom:1px solid var(--line);transition:background .35s,color .35s,border-color .35s}
+.nav.dark{background:rgba(18,26,69,.8);color:var(--moon);border-color:rgba(238,240,251,.1)}
+.nav .in{max-width:1200px;margin:0 auto;height:100%;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+.brand svg{width:22px;height:22px}
+.brand b{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.35rem;letter-spacing:-.01em}
+.brand small{font-family:var(--type);font-size:.7rem;opacity:.6}
+.nav ul{display:flex;gap:26px;list-style:none}
+.nav ul a{font-size:.85rem;text-decoration:none;opacity:.7;transition:opacity .2s}
+.nav ul a:hover{opacity:1}
+.pill{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-size:.82rem;font-weight:600;padding:8px 16px;border-radius:999px;transition:background .2s}
+.pill:hover{background:var(--stamp)}
+.nav.dark .pill{background:var(--moon);color:var(--night)}
+@media (max-width:860px){.nav ul{display:none}.brand small{display:none}}
+
+/* Briques communes */
+.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.kick{font-family:var(--type);font-size:.8rem;letter-spacing:.06em;color:var(--stamp)}
+.dk .kick{color:#ff8a73}
+.frame{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 30px 70px rgba(22,32,79,.16),0 6px 16px rgba(22,32,79,.06)}
+.frame img{width:100%;height:auto}
+.dk{background:var(--night);color:var(--moon)}
+
+/* Hero : la page sort de l'enveloppe */
+.hero{height:280vh;position:relative;background:radial-gradient(60% 50% at 80% 10%,rgba(91,159,212,.14),transparent 70%),radial-gradient(50% 40% at 10% 30%,rgba(224,83,61,.08),transparent 70%),var(--paper)}
+.hero-copy{position:absolute;z-index:4;top:clamp(84px,13vh,140px);left:0;right:0;text-align:center;padding:0 22px;
+  opacity:calc(1 - var(--p,0)*3);transform:translateY(calc(var(--p,0)*-60px));will-change:opacity,transform}
+.hero-copy h1{font-weight:700;font-size:clamp(4.4rem,15vw,11rem);letter-spacing:-.055em;line-height:.85;margin:14px 0 20px}
+.hero-copy h1 i{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--stamp);letter-spacing:-.03em}
+.hero-copy .sub{font-family:var(--serif);font-size:clamp(1.15rem,2.3vw,1.55rem);color:var(--ink2);max-width:34ch;margin:0 auto}
+.env{position:absolute;left:50%;bottom:-4svh;width:min(92vw,980px);aspect-ratio:1.85;z-index:1;
+  transform:translateX(-50%) translateY(calc(var(--pe,0)*75svh));will-change:transform}
+.env.front{z-index:3;pointer-events:none}
+.env svg{width:100%;height:100%;display:block;overflow:visible}
+.hero-shot{position:absolute;z-index:2;left:50%;top:0;width:min(84vw,900px);
+  transform:translate(-50%,var(--ty,70svh)) scale(calc(.9 + var(--pz,0)*.1)) rotate(calc((1 - var(--ps,0))*-1.5deg));will-change:transform}
+@media (max-width:760px){
+  .env{width:110vw;bottom:-2svh}
+  .hero-shot{width:92vw}
+}
+
+/* Manifeste : la machine a ecrire */
+.manifesto{height:320vh;position:relative}
+.manifesto .pin{display:flex;align-items:center;justify-content:center;padding:0 24px}
+.paperline{max-width:860px;width:100%;background:var(--sheet);border:1px solid var(--line);border-radius:4px;padding:clamp(28px,5vw,56px) clamp(22px,5vw,64px);box-shadow:0 30px 80px rgba(22,32,79,.12);position:relative;
+  background-image:linear-gradient(transparent calc(100% - 1px),rgba(91,159,212,.18) 1px);background-size:100% 2.1em;background-position:0 clamp(28px,5vw,56px)}
+.paperline::before{content:"";position:absolute;top:0;bottom:0;left:clamp(14px,3vw,36px);border-left:2px solid rgba(224,83,61,.28)}
+.paperline .kick{display:block;margin-bottom:18px}
+#manifeste{font-family:var(--type);font-size:clamp(1.15rem,2.6vw,1.7rem);line-height:2.1em;color:var(--ink);min-height:8.4em}
+#manifeste .rest{color:transparent}
+#manifeste .caret{display:inline-block;width:.55em;height:1.05em;margin-bottom:-.15em;background:var(--stamp);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* Parcours */
+.route{padding:120px 24px 110px}
+.route h2,.sec-h{max-width:1180px;margin:12px auto 18px;font-weight:700;font-size:clamp(2rem,4.6vw,3.4rem);letter-spacing:-.04em;line-height:1.02}
+.route .lead,.sec-lead{max-width:1180px;margin:0 auto 60px;color:var(--ink2);font-size:1.08rem;max-width:min(1180px,60ch)}
+.route .kick,.sec-k{display:block;max-width:1180px;margin:0 auto}
+.track-wrap{max-width:1180px;margin:0 auto;position:relative}
+.track-svg{width:100%;height:60px;display:block;overflow:visible}
+.track-svg .bg{fill:none;stroke:var(--line);stroke-width:3;stroke-dasharray:2 8;stroke-linecap:round}
+.track-svg .ink{fill:none;stroke:var(--plume);stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--k,0))}
+.miles{display:grid;grid-template-columns:repeat(7,1fr);margin-top:-44px;position:relative}
+.mile{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.mile i{width:28px;height:28px;border-radius:50%;background:var(--sheet);border:2px solid var(--line);display:grid;place-items:center;transition:background .4s,border-color .4s,transform .4s}
+.mile i svg{width:14px;height:14px;color:#fff;opacity:0;transition:opacity .3s}
+.mile.on i{background:var(--plume);border-color:var(--plume);transform:scale(1.1)}
+.mile.on i svg{opacity:1}
+.mile:last-child.on i{background:var(--stamp);border-color:var(--stamp)}
+.mile b{font-size:.95rem;font-weight:600}
+.mile span{font-size:.8rem;color:var(--ink3);max-width:15ch}
+@media (max-width:760px){
+  .track-svg{display:none}
+  .miles{grid-template-columns:1fr;gap:16px;margin-top:0}
+  .mile{flex-direction:row;text-align:left}
+  .mile span{max-width:none}
+}
+
+/* Vitrine : les feuilles s'empilent */
+.desk{height:calc(var(--n)*110vh);position:relative;background:linear-gradient(180deg,var(--paper),var(--lilac))}
+.desk .pin{display:flex;align-items:center}
+.desk-grid{width:100%;max-width:1260px;margin:0 auto;padding:70px 28px 20px;display:grid;grid-template-columns:minmax(270px,.62fr) 1.5fr;gap:52px;align-items:center}
+.pageno{font-family:var(--type);font-size:.85rem;color:var(--ink3);margin-bottom:18px}
+.pageno b{color:var(--ink);font-weight:400}
+.dtexts{display:grid}
+.dt{grid-area:1/1;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .55s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.dt.on{opacity:1;transform:none;pointer-events:auto}
+.dt h3{font-weight:700;font-size:clamp(2.1rem,4.2vw,3.4rem);letter-spacing:-.04em;line-height:1;margin:12px 0 16px}
+.dt p{color:var(--ink2);font-size:1.05rem;max-width:36ch}
+.dt ul{list-style:none;margin-top:16px;display:grid;gap:6px}
+.dt li{font-size:.93rem;color:var(--ink2);padding-left:18px;position:relative}
+.dt li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--stamp)}
+.stack{display:grid;position:relative}
+.sheet{grid-area:1/1;transition:transform .8s cubic-bezier(.2,.75,.2,1),opacity .5s ease;opacity:0;transform:translateX(70%) rotate(9deg)}
+.sheet.shown{opacity:1}
+@media (max-width:860px){
+  .desk-grid{grid-template-columns:1fr;gap:22px;padding:72px 18px 10px}
+  .stack{order:-1}
+  .dt h3{font-size:1.9rem;margin:6px 0 10px}
+  .dt p{font-size:.98rem;max-width:none}
+  .dt ul{display:none}
+  .pageno{margin-bottom:6px}
+}
+
+/* La lettre : le gabarit se construit */
+.afnor{height:420vh;position:relative}
+.afnor .pin{display:flex;align-items:center}
+.afnor-grid{width:100%;max-width:1200px;margin:0 auto;padding:70px 28px 20px;display:grid;grid-template-columns:1fr minmax(300px,.85fr);gap:60px;align-items:center}
+.afnor h2{font-weight:700;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.04em;line-height:1.02;margin:12px 0 18px}
+.atexts{display:grid;margin-top:8px}
+.at{grid-area:1/1;opacity:0;transform:translateX(-14px);transition:opacity .45s,transform .45s}
+.at.on{opacity:1;transform:none}
+.at .n{font-family:var(--serif);font-style:italic;font-size:3.4rem;line-height:1;color:var(--stamp)}
+.at strong{display:block;font-size:1.25rem;margin:6px 0 6px;letter-spacing:-.01em}
+.at p{color:var(--ink2);font-size:1rem;max-width:42ch}
+.a4{width:100%;max-width:440px;margin:0 auto;display:block;filter:drop-shadow(0 30px 50px rgba(22,32,79,.16))}
+.a4 .pg{fill:#fff}
+.a4 .mg{fill:none;stroke:rgba(91,159,212,.5);stroke-width:.5;stroke-dasharray:2 2}
+.a4 .blk{opacity:0;transform:translateY(4px);transition:opacity .45s ease,transform .45s ease}
+.a4 .ln{fill:rgba(22,32,79,.18)}
+.a4 .ln.b{fill:rgba(22,32,79,.42)}
+.a4 .lbl{font-family:"Courier Prime",monospace;font-size:5.2px;fill:var(--stamp)}
+.a4 .dim{stroke:var(--stamp);stroke-width:.5;fill:none}
+.a4 .tag{font-family:"Newsreader",serif;font-style:italic;font-size:6px;fill:var(--plume)}
+.ph1 .b1,.ph2 .b1,.ph2 .b2,.ph3 .b1,.ph3 .b2,.ph3 .b3,.ph4 .b1,.ph4 .b2,.ph4 .b3,.ph4 .b4{opacity:1;transform:none}
+.ph1 .b1 .lbl,.ph2 .b2 .lbl,.ph3 .b3 .lbl,.ph4 .b4 .lbl{opacity:1}
+@media (max-width:860px){
+  .afnor-grid{grid-template-columns:1fr;gap:14px;padding:64px 18px 10px}
+  .afnor h2{font-size:1.7rem;margin:6px 0 4px}
+  .at .n{font-size:2.2rem}.at strong{font-size:1.05rem}.at p{font-size:.92rem}
+  .a4{max-width:min(300px,64svh)}
+}
+
+/* Donnees */
+.data{padding:130px 24px 140px}
+.data .sec-lead{color:rgba(238,240,251,.7)}
+.trio{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{position:relative;padding:28px 24px 26px;border-radius:14px;background:var(--night2);border:1px solid rgba(238,240,251,.1)}
+.card svg{width:42px;height:42px;padding:9px;border-radius:12px;margin-bottom:18px}
+.card h3{font-size:1.25rem;letter-spacing:-.01em;margin-bottom:8px}
+.card p{color:rgba(238,240,251,.72);font-size:.95rem}
+.card p+p{margin-top:8px}
+.card.c1 svg{background:rgba(91,159,212,.18);color:#8cc3ef}
+.card.c2 svg{background:rgba(120,200,150,.16);color:#8fdcae}
+.card.c3{border-color:rgba(255,138,115,.4)}
+.card.c3 svg{background:rgba(224,83,61,.18);color:#ff8a73}
+.wipe{max-width:1180px;margin:22px auto 0;display:flex;align-items:center;gap:14px;padding:16px 20px;border:1px dashed rgba(238,240,251,.22);border-radius:12px;color:rgba(238,240,251,.75);font-size:.95rem}
+.wipe svg{flex:none;width:22px;height:22px;color:#ff8a73}
+@media (max-width:860px){.trio{grid-template-columns:1fr}}
+
+/* Accessibilite : avant / apres */
+.access{padding:130px 24px 130px}
+.ba{max-width:1100px;margin:0 auto;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px rgba(22,32,79,.16);touch-action:pan-y;user-select:none;cursor:ew-resize}
+.ba img{width:100%;height:auto;display:block;pointer-events:none}
+.ba .top{position:absolute;inset:0;clip-path:inset(0 0 0 calc(var(--cut,50) * 1%))}
+.ba .bar{position:absolute;top:0;bottom:0;left:calc(var(--cut,50) * 1%);width:2px;margin-left:-1px;background:var(--stamp)}
+.ba .knob{position:absolute;top:50%;left:calc(var(--cut,50) * 1%);width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:var(--stamp);color:#fff;display:grid;place-items:center;box-shadow:0 6px 18px rgba(224,83,61,.4)}
+.ba .knob svg{width:22px;height:22px}
+.ba .t{position:absolute;top:14px;font-family:var(--type);font-size:.75rem;padding:4px 10px;border-radius:4px}
+.ba .t.l{left:14px;background:var(--ink);color:#fff}
+.ba .t.r{right:14px;background:#fff;color:var(--ink)}
+.feats{max-width:1100px;margin:34px auto 0;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.feats span{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border:1px solid var(--line);border-radius:999px;background:var(--sheet);font-size:.92rem}
+.feats svg{width:16px;height:16px;color:var(--plume)}
+
+/* Chiffres : des timbres */
+.stamps{padding:120px 24px 130px;text-align:center;background:var(--lilac)}
+.stamps .sec-h,.stamps .sec-k{text-align:center}
+.srow{max-width:980px;margin:56px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.stp{position:relative;padding:14px;background:#fff;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 6px,#0000 96%,#000) -9px -9px/18px 18px;
+          mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 6px,#0000 96%,#000) -9px -9px/18px 18px;
+  filter:drop-shadow(0 10px 18px rgba(22,32,79,.12))}
+.stp .in{border:1.5px solid var(--c);padding:30px 16px 24px;height:100%}
+.stp strong{display:block;font-weight:700;font-size:clamp(3.6rem,8vw,5.4rem);letter-spacing:-.05em;line-height:1;color:var(--c)}
+.stp strong small{font-size:.45em;letter-spacing:-.02em}
+.stp span{display:block;margin-top:10px;font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--ink2)}
+.stp .val{display:block;margin-top:14px;font-family:var(--type);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.js .stp{opacity:0;transform:scale(1.25) rotate(var(--r,0deg))}
+.js .stp.in{animation:stampin .55s cubic-bezier(.3,1.4,.5,1) forwards}
+.stp:nth-child(2){animation-delay:.12s!important}
+.stp:nth-child(3){animation-delay:.24s!important}
+@keyframes stampin{0%{opacity:0;transform:scale(1.25) rotate(var(--r,0deg))}100%{opacity:1;transform:scale(1) rotate(var(--r,0deg))}}
+@media (max-width:760px){.srow{grid-template-columns:1fr;max-width:300px}}
+
+/* Final : le paraphe */
+.final{text-align:center;padding:120px 24px 150px}
+.sig{width:min(420px,84vw);height:auto;margin:0 auto 36px;display:block;overflow:visible}
+.sig path{fill:none;stroke:var(--stamp);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--k,0))}
+.final h2{font-weight:700;font-size:clamp(2.4rem,6.6vw,5.2rem);letter-spacing:-.05em;line-height:1;max-width:15ch;margin:14px auto 22px}
+.final p{color:var(--ink2);font-size:1.12rem;max-width:44ch;margin:0 auto 38px}
+.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;padding:15px 30px;border-radius:999px;font-size:1rem;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:var(--stamp)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink);margin-left:12px}
+.btn.ghost:hover{background:var(--sheet)}
+@media (max-width:480px){.btn.ghost{margin:12px 0 0}}
+
+footer{background:var(--night);color:rgba(238,240,251,.6);padding:38px 24px 58px;font-size:.82rem}
+footer .in{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:space-between}
+footer p{max-width:62ch}
+footer strong{color:var(--moon);font-family:var(--serif);font-style:italic;font-weight:500}
+
+/* Apparition */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+
+/* Mouvement reduit */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  #splash *{animation:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:0!important}
+  .hero,.manifesto,.desk,.afnor{height:auto}
+  .pin{position:static;height:auto;overflow:visible}
+  .hero .pin{padding:120px 22px 70px}
+  .hero-copy{position:static;transform:none;opacity:1}
+  .env{display:none}
+  .hero-shot{position:static;transform:none!important;margin:46px auto 0;width:auto;max-width:1000px}
+  .manifesto .pin{padding:90px 24px}
+  #manifeste .rest{color:inherit}#manifeste .caret{display:none}
+  .track-svg .ink{stroke-dashoffset:0}
+  .desk-grid,.afnor-grid{padding:90px 24px}
+  .dtexts,.stack,.atexts{display:flex;flex-direction:column;gap:30px}
+  .dt,.at,.sheet{opacity:1!important;transform:none!important}
+  .a4 .blk{opacity:1;transform:none}
+  .pageno{display:none}
+  .js .rv,.js .stp{opacity:1;transform:none;animation:none}
+  .sig path{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<div id="splash" role="presentation" aria-hidden="true">
+  <svg class="quill" viewBox="0 0 32 32"><path d="M22 5 C26 7 27 12 24 16 L16 24 L13 21 L21 13 C23 11 23 8 22 5Z" fill="#2c5f8a"/><path d="M22 5 C24 6 25 9 23 12 L18 17 L16 15 L21 10 C22 8 22 6 22 5Z" fill="#5b9fd4" opacity=".5"/><line x1="13" y1="21" x2="7" y2="27" stroke="#2c5f8a" stroke-width="1.8" stroke-linecap="round"/><path d="M13 21 L10 25 L7 27 L11 24Z" fill="#2c5f8a"/></svg>
+  <h2>Scribe</h2>
+  <svg class="flourish" viewBox="0 0 260 40"><path pathLength="1" d="M10 24 C 60 34, 110 8, 150 20 S 220 34, 250 12"/></svg>
+  <p>bâtir par soi-même ce qu'on rêve de voir exister</p>
+</div>
+
+<nav class="nav" aria-label="Navigation principale">
+  <div class="in">
+    <a class="brand" href="#haut">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M22 5 C26 7 27 12 24 16 L16 24 L13 21 L21 13 C23 11 23 8 22 5Z" fill="#2c5f8a"/><path d="M22 5 C24 6 25 9 23 12 L18 17 L16 15 L21 10 C22 8 22 6 22 5Z" fill="#5b9fd4" opacity=".5"/><line x1="13" y1="21" x2="7" y2="27" stroke="#2c5f8a" stroke-width="1.8" stroke-linecap="round"/><path d="M13 21 L10 25 L7 27 L11 24Z" fill="#2c5f8a"/></svg>
+      <b>Scribe</b><small>anthropotech /lab</small>
+    </a>
+    <ul>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#fonctionnement">Fonctionnement</a></li>
+      <li><a href="#lettre">La lettre</a></li>
+      <li><a href="#donnees">Données</a></li>
+    </ul>
+    <a class="pill" href="https://shamsetdean.github.io/scribe/" rel="noopener">Ouvrir Scribe</a>
+  </div>
+</nav>
+
+<main id="haut">
+
+<!-- Hero -->
+<section class="hero" data-scene="hero" aria-label="Présentation de Scribe">
+  <div class="pin">
+    <div class="hero-copy">
+      <p class="kick">Accompagnement emploi · gratuit · sans compte</p>
+      <h1>Scri<i>be</i></h1>
+      <p class="sub">Du CV à l'entretien, chaque étape de la recherche d'emploi. <em>Rien n'est collecté.</em></p>
+    </div>
+    <div class="env back" aria-hidden="true">
+      <svg viewBox="0 0 185 100" preserveAspectRatio="none"><rect x="0" y="0" width="185" height="100" rx="3" fill="#dfe3f2"/><path d="M0 0 L92.5 46 L185 0" fill="#d3d8ec"/></svg>
+    </div>
+    <div class="hero-shot">
+      <figure class="frame"><img src="images/01-tableau.webp" width="1800" height="1200" alt="Le tableau de bord de Scribe, avec une candidate fictive : lettres générées, candidatures, entretiens et progression de la campagne" fetchpriority="high"></figure>
+    </div>
+    <div class="env front" aria-hidden="true">
+      <svg viewBox="0 0 185 100" preserveAspectRatio="none"><path d="M0 18 L92.5 62 L185 18 L185 100 L0 100 Z" fill="#eceef8"/><path d="M0 100 L92.5 56 L185 100" fill="none" stroke="rgba(22,32,79,.1)" stroke-width=".6"/><path d="M0 18 L92.5 62 L185 18" fill="none" stroke="rgba(22,32,79,.12)" stroke-width=".6"/><g transform="translate(150 70) rotate(-8)"><rect x="-13" y="-16" width="26" height="32" fill="#fff" stroke="#e0533d" stroke-width=".8" stroke-dasharray="1.6 1.2"/><path d="M-4 6 C2 3 6 -2 5 -9 L-1 2 L-3 0 Z" fill="#e0533d"/></g></svg>
+    </div>
+  </div>
+</section>
+
+<!-- Manifeste -->
+<section class="manifesto" data-scene="manifesto" aria-label="Le constat">
+  <div class="pin">
+    <div class="paperline">
+      <span class="kick">Le constat</span>
+      <p id="manifeste"><span class="typed"></span><span class="caret" aria-hidden="true"></span><span class="rest">Un CV écrit à la hâte. Une lettre qui commence par « Je ». Une candidature envoyée, puis oubliée. Scribe reprend chaque étape, de la première ligne du CV jusqu'à la relance, et aide à bien la faire.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- Parcours -->
+<section class="route" id="parcours" data-route aria-label="Le parcours">
+  <span class="kick rv">Le parcours</span>
+  <h2 class="rv">Une campagne de recherche, <em class="s">pas une pile de documents.</em></h2>
+  <p class="lead rv">Scribe suit la progression du profil jusqu'à la réponse, comme sur son tableau de bord. Chaque étape franchie se coche.</p>
+  <div class="track-wrap">
+    <svg class="track-svg" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+      <path class="bg" d="M70 30 H930"/>
+      <path class="ink" pathLength="1" d="M70 30 H930"/>
+    </svg>
+    <div class="miles">
+      <div class="mile"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></i><b>Profil</b><span>Vos coordonnées, une fois</span></div>
+      <div class="mile"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></i><b>CV</b><span>Rédigé et exporté en PDF</span></div>
+      <div class="mile"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></i><b>Lettre</b><span>Adaptée à chaque offre</span></div>
+      <div class="mile"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></i><b>Candidature</b><span>Envoyée et suivie</span></div>
+      <div class="mile"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></i><b>Relance</b><span>Entre J+10 et J+14</span></div>
+      <div class="mile"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></i><b>Entretien</b><span>Préparé, puis analysé</span></div>
+      <div class="mile"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></i><b>Succès</b><span>Le poste</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Vitrine -->
+<section class="desk" id="fonctionnement" data-scene="desk" style="--n:5" aria-label="Fonctionnement">
+  <div class="pin">
+    <div class="desk-grid">
+      <div>
+        <p class="pageno">page <b class="cur">1</b> / 5</p>
+        <div class="dtexts">
+          <article class="dt on">
+            <p class="kick">Mon CV</p>
+            <h3>Un CV <em class="s">qui se lit en dix secondes.</em></h3>
+            <p>Chronologique ou thématique, section par section, avec l'aperçu qui se met à jour à chaque frappe. Un clic, et le PDF est prêt.</p>
+            <ul><li>Le titre, premier critère de tri des recruteurs</li><li>Des conseils à chaque section</li></ul>
+          </article>
+          <article class="dt">
+            <p class="kick">Ma lettre</p>
+            <h3>Une lettre <em class="s">pour chaque offre.</em></h3>
+            <p>Scribe prépare une consigne précise pour ChatGPT à partir de l'offre et du profil. La réponse collée devient un PDF mis en page, avec un score de personnalisation.</p>
+            <ul><li>Version sage ou audacieuse</li><li>Méthode Vous, Moi, Nous</li></ul>
+          </article>
+          <article class="dt">
+            <p class="kick">Mes candidatures</p>
+            <h3>Rien ne <em class="s">tombe dans l'oubli.</em></h3>
+            <p>Chaque candidature a son statut, sa date de relance et ses notes. Le calendrier montre quand relancer, les badges marquent les progrès.</p>
+            <ul><li>Objectif de candidatures par semaine</li><li>Export du suivi en CSV</li></ul>
+          </article>
+          <article class="dt">
+            <p class="kick">L'entretien</p>
+            <h3>Arriver <em class="s">préparé.</em></h3>
+            <p>Un simulateur de questions classées par thème, une checklist, une fiche de préparation et un bilan à remplir après l'entretien.</p>
+            <ul><li>Conseils selon l'interlocuteur</li><li>Fiche de préparation en PDF</li></ul>
+          </article>
+          <article class="dt">
+            <p class="kick">Méthodes</p>
+            <h3>Les règles <em class="s">à portée de main.</em></h3>
+            <p>La méthode Vous, Moi, Nous, dix règles essentielles, les formules de politesse et une bibliothèque personnelle de formulations.</p>
+            <ul><li>Formules prêtes à copier</li><li>Conseil du jour sur le tableau de bord</li></ul>
+          </article>
+        </div>
+      </div>
+      <div class="stack">
+        <figure class="sheet frame shown"><img src="images/02-cv.webp" width="1800" height="1200" alt="Le module CV avec le formulaire et l'aperçu du CV d'une candidate fictive"></figure>
+        <figure class="sheet frame"><img src="images/03-lettre.webp" width="1800" height="1200" alt="L'étape de génération de la lettre : consigne, ChatGPT, réponse collée et score" loading="lazy"></figure>
+        <figure class="sheet frame"><img src="images/04-candidatures.webp" width="1800" height="1200" alt="Le tableau de suivi des candidatures avec statuts, relances et calendrier" loading="lazy"></figure>
+        <figure class="sheet frame"><img src="images/05-entretien.webp" width="1800" height="1200" alt="La préparation d'entretien avec le simulateur de questions" loading="lazy"></figure>
+        <figure class="sheet frame"><img src="images/06-ressources.webp" width="1800" height="1200" alt="Les méthodes et ressources : Vous, Moi, Nous, règles et formules de politesse" loading="lazy"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- La lettre -->
+<section class="afnor" id="lettre" data-scene="afnor" aria-label="La mise en page de la lettre">
+  <div class="pin">
+    <div class="afnor-grid">
+      <div>
+        <p class="kick">La lettre</p>
+        <h2>Chaque bloc <em class="s">à sa place, au millimètre.</em></h2>
+        <div class="atexts">
+          <div class="at on"><span class="n">i.</span><strong>Une feuille A4, 25 mm de marge</strong><p>Le PDF reprend la présentation classique de la lettre française, inspirée de la norme AFNOR NF Z 11-001.</p></div>
+          <div class="at"><span class="n">ii.</span><strong>Expéditeur à gauche, date à droite</strong><p>Nom, adresse, e-mail et téléphone en haut à gauche. Le lieu et la date en haut à droite.</p></div>
+          <div class="at"><span class="n">iii.</span><strong>Destinataire à 105 mm du bord</strong><p>Le bloc du recruteur est placé à droite, à 90 mm du haut de la page, avec son nom et sa fonction.</p></div>
+          <div class="at"><span class="n">iv.</span><strong>Objet, puis Vous, Moi, Nous</strong><p>L'objet annonce le poste. Le corps suit la méthode : l'entreprise, le profil chiffré, la proposition de rencontre.</p></div>
+          <div class="at"><span class="n">v.</span><strong>La formule qui répond à l'appel</strong><p>La formule de politesse reprend exactement la civilité du début : Madame, Monsieur, ou Madame, Monsieur. Puis la signature.</p></div>
+        </div>
+      </div>
+      <svg class="a4 ph0" id="a4" viewBox="-14 -10 238 317" aria-hidden="true">
+        <rect class="pg" x="0" y="0" width="210" height="297" rx="1"/>
+        <rect class="mg" x="25" y="25" width="160" height="247"/>
+        <text class="lbl" x="27" y="21">25 mm</text>
+        <g class="blk b1">
+          <rect class="ln b" x="25" y="26" width="38" height="3.4"/><rect class="ln" x="25" y="32" width="50" height="2.6"/><rect class="ln" x="25" y="37" width="34" height="2.6"/><rect class="ln" x="25" y="42" width="44" height="2.6"/><rect class="ln" x="25" y="47" width="30" height="2.6"/>
+          <rect class="ln" x="140" y="26" width="45" height="2.6"/>
+          <text class="tag" x="25" y="58">Expéditeur</text><text class="tag" x="185" y="36" text-anchor="end">Lieu et date</text>
+        </g>
+        <g class="blk b2">
+          <rect class="ln b" x="105" y="88" width="56" height="3.4"/><rect class="ln" x="105" y="94" width="64" height="2.6"/><rect class="ln" x="105" y="99" width="42" height="2.6"/>
+          <path class="dim" d="M0 84 H105 M2 82 V86 M103 82 V86"/><text class="lbl" x="44" y="81">105 mm</text>
+          <path class="dim" d="M196 0 V88 M194 2 H198 M194 86 H198"/><text class="lbl" x="199" y="47">90</text><text class="lbl" x="199" y="53">mm</text>
+          <text class="tag" x="105" y="111">Destinataire</text>
+        </g>
+        <g class="blk b3">
+          <rect class="ln b" x="25" y="130" width="96" height="3.4"/><text class="tag" x="125" y="133.5">Objet</text>
+          <rect class="ln" x="25" y="146" width="22" height="2.6"/>
+          <rect class="ln" x="25" y="155" width="160" height="2.4"/><rect class="ln" x="25" y="160" width="160" height="2.4"/><rect class="ln" x="25" y="165" width="110" height="2.4"/>
+          <rect class="ln" x="25" y="174" width="160" height="2.4"/><rect class="ln" x="25" y="179" width="160" height="2.4"/><rect class="ln" x="25" y="184" width="160" height="2.4"/><rect class="ln" x="25" y="189" width="80" height="2.4"/>
+          <rect class="ln" x="25" y="198" width="160" height="2.4"/><rect class="ln" x="25" y="203" width="70" height="2.4"/>
+          <text class="lbl" x="-12" y="162">VOUS</text><text class="lbl" x="-12" y="183">MOI</text><text class="lbl" x="-12" y="202">NOUS</text>
+        </g>
+        <g class="blk b4">
+          <rect class="ln" x="25" y="214" width="160" height="2.4"/><rect class="ln" x="25" y="219" width="96" height="2.4"/>
+          <text class="tag" x="25" y="230">Formule de politesse</text>
+          <path d="M138 246 C 146 236, 152 252, 160 242 S 174 238, 182 246" fill="none" stroke="#2c5f8a" stroke-width="1.1" stroke-linecap="round"/>
+          <rect class="ln b" x="146" y="252" width="36" height="3"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Donnees -->
+<section class="data dk" id="donnees" data-dark aria-label="Vos données">
+  <span class="kick sec-k rv">Vos données</span>
+  <h2 class="sec-h rv">Tout reste dans votre navigateur. <em class="s">Sauf ce que vous choisissez d'envoyer.</em></h2>
+  <p class="sec-lead rv">Un CV et une lettre contiennent des informations personnelles. Scribe a été pensé pour qu'elles restent entre vos mains.</p>
+  <div class="trio">
+    <div class="card c1 rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+      <h3>Dans votre navigateur</h3>
+      <p>CV, lettres, candidatures, bilans d'entretien et formulations sont enregistrés sur votre appareil, dans votre navigateur.</p>
+    </div>
+    <div class="card c2 rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+      <h3>Aucun compte, aucune collecte</h3>
+      <p>Pas d'inscription, pas de serveur qui garde vos documents, aucun cookie, aucun traceur, aucune publicité.</p>
+    </div>
+    <div class="card c3 rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h12M12 6l6 6-6 6"/><path d="M20 4v16"/></svg>
+      <h3>ChatGPT, si vous le décidez</h3>
+      <p>Pour la lettre, Scribe prépare une consigne que vous collez vous-même dans ChatGPT. Elle contient votre nom et vos coordonnées : relisez-la avant de l'envoyer.</p>
+      <p>Une fois collée, ce sont les règles d'OpenAI qui s'appliquent, pas celles de Scribe.</p>
+    </div>
+  </div>
+  <div class="wipe rv">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>
+    <span>Un bouton efface toutes les données Scribe de votre navigateur, en un clic, à tout moment.</span>
+  </div>
+</section>
+
+<!-- Accessibilite -->
+<section class="access" aria-label="Accessibilité">
+  <span class="kick sec-k rv">Pour tout le monde</span>
+  <h2 class="sec-h rv">Le même outil, <em class="s">à votre façon.</em></h2>
+  <p class="sec-lead rv">Faites glisser le curseur : Scribe passe en mode sombre. D'autres réglages adaptent l'affichage à chacun.</p>
+  <div class="ba rv" id="ba" role="img" aria-label="Comparaison du tableau de bord en mode clair et en mode sombre">
+    <img src="images/07-sombre.webp" width="1800" height="1200" alt="" loading="lazy">
+    <div class="top"><img src="images/01-tableau.webp" width="1800" height="1200" alt="" loading="lazy"></div>
+    <span class="t l">Sombre</span><span class="t r">Clair</span>
+    <i class="bar"></i>
+    <span class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+  </div>
+  <div class="feats">
+    <span class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg>Mode sombre</span>
+    <span class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>Contraste élevé</span>
+    <span class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 18L9 6l5 12M6 14h6M16 18v-6a2 2 0 0 1 4 0v6"/></svg>Police adaptée à la dyslexie</span>
+    <span class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7V5h10v2M9 5v14M7 19h4M14 12v-1h6v1M17 11v8M16 19h2"/></svg>Taille du texte réglable</span>
+    <span class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>Lecture de la lettre à voix haute</span>
+    <span class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Mode guidé ou rapide</span>
+  </div>
+</section>
+
+<!-- Chiffres -->
+<section class="stamps" id="chiffres" aria-label="En chiffres">
+  <span class="kick sec-k rv">En chiffres</span>
+  <h2 class="sec-h rv">Tout le nécessaire, <em class="s">rien à payer.</em></h2>
+  <div class="srow">
+    <div class="stp" style="--c:#2c5f8a;--r:-3deg"><div class="in"><strong data-count="6">0</strong><span>modules, du CV à l'entretien</span><b class="val">Scribe · 2026</b></div></div>
+    <div class="stp" style="--c:#e0533d;--r:2deg"><div class="in"><strong data-count="0">0</strong><span>compte à créer</span><b class="val">Scribe · 2026</b></div></div>
+    <div class="stp" style="--c:#16204f;--r:-1.5deg"><div class="in"><strong><b data-count="0">0</b><small> €</small></strong><span>entièrement gratuit</span><b class="val">Scribe · 2026</b></div></div>
+  </div>
+</section>
+
+<!-- Final -->
+<section class="final" data-final>
+  <svg class="sig" viewBox="0 0 420 90" aria-hidden="true"><path pathLength="1" d="M12 58 C 40 20, 60 20, 62 44 C 64 66, 40 72, 46 52 C 54 28, 92 30, 96 52 C 100 70, 120 40, 132 46 C 146 54, 150 66, 168 50 C 186 34, 196 60, 214 52 C 236 42, 250 30, 276 44 C 300 58, 330 62, 408 30"/></svg>
+  <p class="kick rv">À vous d'écrire</p>
+  <h2 class="rv">Votre prochaine candidature <em class="s">commence ici.</em></h2>
+  <p class="rv">Ouvrez Scribe dans votre navigateur. Pas d'inscription, pas d'installation : le tableau de bord vous attend.</p>
+  <div class="rv">
+    <a class="btn" href="https://shamsetdean.github.io/scribe/" rel="noopener">Ouvrir Scribe</a><a class="btn ghost" href="#haut">Revenir en haut</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="in">
+    <p><strong>Scribe</strong>, projet d'Anthropotech Lab. Conçu et développé par Shams &amp; Dean. Les captures de cette page utilisent une candidate fictive.</p>
+    <p>&copy; 2026 Shams Guettaf, Anthropotech Lab. Tous droits réservés. Ce site ne dépose aucun cookie, n'enregistre rien dans votre navigateur et n'utilise aucun traceur. <a href="mentions-legales.html">Mentions légales</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v,a,b){ return Math.min(b===undefined?1:b, Math.max(a===undefined?0:a, v)); };
+
+  /* Apparitions et timbres */
+  var rv = document.querySelectorAll('.rv,.stp');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.2, rootMargin:'0px 0px -6% 0px'});
+    rv.forEach(function(el){ io.observe(el); });
+  } else { rv.forEach(function(el){ el.classList.add('in'); }); }
+
+  /* Compteurs */
+  var counters = document.querySelectorAll('[data-count]');
+  function runCount(el){
+    var target = +el.getAttribute('data-count'), t0 = null, dur = 1200;
+    if(!target){ el.textContent = '0'; return; }
+    function step(t){ if(t0===null) t0 = t; var k = clamp((t - t0)/dur); el.textContent = Math.round(target*(1 - Math.pow(1-k,3))); if(k<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window && !reduce){
+    var io2 = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ runCount(e.target); io2.unobserve(e.target); } }); },{threshold:.6});
+    counters.forEach(function(el){ io2.observe(el); });
+  } else { counters.forEach(function(el){ el.textContent = el.getAttribute('data-count'); }); }
+
+  /* Curseur avant / apres (souris, doigt, clavier) */
+  var ba = document.getElementById('ba'), dragging = false, touched = false;
+  function setCut(x){ var r = ba.getBoundingClientRect(); ba.style.setProperty('--cut', (clamp((x - r.left)/r.width)*100).toFixed(2)); }
+  ba.addEventListener('pointerdown', function(e){ dragging = true; touched = true; setCut(e.clientX); ba.setPointerCapture(e.pointerId); });
+  ba.addEventListener('pointermove', function(e){ if(dragging) setCut(e.clientX); });
+  ba.addEventListener('pointerup', function(){ dragging = false; });
+  ba.tabIndex = 0;
+  ba.addEventListener('keydown', function(e){
+    var c = parseFloat(getComputedStyle(ba).getPropertyValue('--cut')) || 50;
+    if(e.key === 'ArrowLeft'){ touched = true; ba.style.setProperty('--cut', Math.max(0, c - 5)); e.preventDefault(); }
+    if(e.key === 'ArrowRight'){ touched = true; ba.style.setProperty('--cut', Math.min(100, c + 5)); e.preventDefault(); }
+  });
+
+  if(reduce) return;
+
+  /* Machine a ecrire */
+  var mp = document.getElementById('manifeste');
+  var typed = mp.querySelector('.typed'), rest = mp.querySelector('.rest');
+  var TEXT = rest.textContent, last = -1;
+
+  var nav = document.querySelector('.nav');
+  var darks = document.querySelectorAll('[data-dark]');
+  var hero = document.querySelector('[data-scene="hero"]');
+  var shot = hero.querySelector('.hero-shot'), envFront = hero.querySelector('.env.front');
+  var mani = document.querySelector('[data-scene="manifesto"]');
+  var route = document.querySelector('[data-route]');
+  var miles = route.querySelectorAll('.mile');
+  var desk = document.querySelector('[data-scene="desk"]');
+  var dts = desk.querySelectorAll('.dt'), sheets = desk.querySelectorAll('.sheet'), cur = desk.querySelector('.cur');
+  var ROT = [-2.2, 1.6, -1.1, 2.1, -.6];
+  var afnor = document.querySelector('[data-scene="afnor"]'), a4 = document.getElementById('a4'), ats = afnor.querySelectorAll('.at');
+  var fin = document.querySelector('[data-final]');
+  var dActive = -1, aPhase = -1;
+
+  function pct(el){ var r = el.getBoundingClientRect(); return clamp(-r.top / (r.height - window.innerHeight)); }
+
+  function setSheets(idx){
+    sheets.forEach(function(s,i){
+      if(i > idx){ s.classList.remove('shown'); s.style.transform = 'translateX(70%) rotate(9deg)'; s.style.zIndex = i; }
+      else {
+        var depth = idx - i;
+        s.classList.add('shown');
+        s.style.transform = 'translate(' + (-depth*10) + 'px,' + (-depth*8) + 'px) rotate(' + ROT[i] + 'deg) scale(' + (1 - depth*.02) + ')';
+        s.style.zIndex = i;
+        s.style.opacity = depth > 2 ? 0 : 1;
+      }
+    });
+  }
+
+  function frame(){
+    var h = window.innerHeight;
+
+    /* Hero */
+    var p = pct(hero);
+    hero.style.setProperty('--p', p.toFixed(4));
+    hero.style.setProperty('--ps', clamp(p*1.7).toFixed(4));
+    hero.style.setProperty('--pz', clamp(p*1.7 - .3).toFixed(4));
+    hero.style.setProperty('--pe', clamp(p*2 - .55).toFixed(4));
+    /* la page part de l'interieur de l'enveloppe et remonte au centre de l'ecran */
+    var H = shot.offsetHeight, er = envFront.offsetHeight, envTop = h*1.04 - er;
+    var startY = envTop + er*.18 - Math.min(H*.16, 90), endY = Math.max(66, (h - H)/2 + 14);
+    var ps = clamp(p*1.7);
+    hero.style.setProperty('--ty', (startY + (endY - startY)*ps).toFixed(1) + 'px');
+
+    /* Machine a ecrire */
+    var m = pct(mani), n = Math.round(clamp(m*1.15)*TEXT.length);
+    if(n !== last){ last = n; typed.textContent = TEXT.slice(0,n); rest.textContent = TEXT.slice(n); }
+
+    /* Parcours */
+    var rr = route.getBoundingClientRect(), k = clamp((h*.85 - rr.top)/(rr.height*.75));
+    route.style.setProperty('--k', k.toFixed(3));
+    miles.forEach(function(mi,i){ mi.classList.toggle('on', k >= (i/(miles.length-1))*.98); });
+
+    /* Vitrine */
+    var dp = pct(desk), di = Math.min(dts.length-1, Math.floor(dp*dts.length));
+    if(di !== dActive){
+      dActive = di;
+      dts.forEach(function(t,i){ t.classList.toggle('on', i===di); });
+      cur.textContent = di + 1;
+      setSheets(di);
+    }
+
+    /* Lettre */
+    var ap = Math.min(4, Math.floor(pct(afnor)*5));
+    if(ap !== aPhase){
+      aPhase = ap;
+      a4.setAttribute('class', 'a4 ph' + ap);
+      ats.forEach(function(t,i){ t.classList.toggle('on', i===ap); });
+    }
+
+    /* Avant / apres : suit le defilement tant qu'on n'a pas touche au curseur */
+    if(!touched){
+      var br = ba.getBoundingClientRect();
+      var v = clamp((h - br.top)/(h + br.height*.2));
+      ba.style.setProperty('--cut', (88 - v*76).toFixed(1));
+    }
+
+    /* Paraphe final */
+    var fr = fin.getBoundingClientRect();
+    fin.style.setProperty('--k', clamp((h - fr.top)/(h*.75)).toFixed(3));
+
+    /* Navigation */
+    var dark = false;
+    darks.forEach(function(el){ var r = el.getBoundingClientRect(); if(r.top <= 28 && r.bottom >= 28) dark = true; });
+    nav.classList.toggle('dark', dark);
+  }
+
+  var ticking = false;
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(function(){ frame(); ticking = false; }); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  frame();
+})();
+</script>
+<script>
+(function(){
+  var root = document.documentElement, s = document.getElementById('splash');
+  if(!s || !root.classList.contains('splash-on')) return;
+  var done = false;
+  function close(){
+    if(done) return; done = true;
+    s.classList.add('out');
+    root.classList.remove('splash-on');
+    setTimeout(function(){ if(s.parentNode) s.parentNode.removeChild(s); }, 800);
+  }
+  setTimeout(close, 2700);
+  s.addEventListener('click', close);
+  document.addEventListener('keydown', close, {once:true});
+})();
+</script>
+</body>
+</html>
